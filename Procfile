@@ -1,1 +1,1 @@
-web: ./build/install/PingMate/bin/app
+web: ./build/install/app/bin/app
