@@ -13,7 +13,7 @@ public class RunJetty {
         Server server = new Server(getPort());
         ServletContextHandler servletHandler = new ServletContextHandler();
         ServletHolder holder = new ServletHolder("spring", servlet);
-        servletHandler.addServlet(holder, "/spring/*");
+        servletHandler.addServlet(holder, "/*");
         server.setHandler(servletHandler);
 
         server.start();
