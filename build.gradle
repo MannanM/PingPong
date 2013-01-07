@@ -4,7 +4,7 @@ apply plugin:'idea'
 
 version = '0.0.1-SNAPSHOT'
 
-mainClassName = "com.jamesward.Webapp"
+mainClassName = "au.com.pingmate.WebApp"
 applicationName = "PingMate"
 
 repositories {
