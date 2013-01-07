@@ -10,8 +10,7 @@ public class RunJetty {
         springContext.register(AppContext.class);
 
         DispatcherServlet servlet = new DispatcherServlet(springContext);
-
-        Server server = new Server(8080);
+        Server server = new Server(getPort());
         ServletContextHandler servletHandler = new ServletContextHandler();
         ServletHolder holder = new ServletHolder("spring", servlet);
         servletHandler.addServlet(holder, "/spring/*");
@@ -20,4 +19,11 @@ public class RunJetty {
         server.start();
     }
 
+    private static int getPort() {
+        String port = System.getenv("PORT");
+        if (port != null) {
+            return Integer.valueOf(port);
+        }
+        return 8080;
+    }
 }
