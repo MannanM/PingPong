@@ -16,4 +16,14 @@ dependencies {
     compile 'cglib:cglib-nodep:2.2'
 }
 
-task stage(dependsOn: ['war'])
+configurations{
+    myLibs
+}
+dependencies {
+    myLibs 'org.mortbay.jetty:jetty-runner:8.1.0.RC0'
+}
+
+task stage(dependsOn: ['war'], type: Copy) {
+    into "$buildDir/jetty"
+    from configurations.myLibs
+}
