@@ -2,40 +2,40 @@ package au.com.pingmate.domain;
 
 import java.util.Date;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "PINGPONG_GAME")
+@Entity
+@Table(name = "PINGPONG_GAME")
 public class PingPongGame {
 
-//    @Id
-//    @Column(name="GAME_ID")
-//    @GeneratedValue
+    @Id
+    @Column(name="GAME_ID")
+    @GeneratedValue
     private int id;
     
-//    @Column(name="DATE_PLAYED")
+    @Column(name="DATE_PLAYED")
     private Date played;
     
-//    @Column(name="WINNING_SCORE")
+    @Column(name="WINNING_SCORE")
     private int winningScore;
     
-//    @Column(name="LOSING_SCORE")
+    @Column(name="LOSING_SCORE")
     private int losingScore;
     
-//    @Column(name="WINNING_PLAYER")
+    @Column(name="WINNING_PLAYER")
     private int winnerId;
     
-//    @Column(name="LOSING_PLAYER")
+    @Column(name="LOSING_PLAYER")
     private int loserId;
     
-//    @Column(name="WINNING_RANKING")
+    @Column(name="WINNING_RANKING")
     private double winningPlayerRanking;
     
-//    @Column(name="LOSING_RANKING")
+    @Column(name="LOSING_RANKING")
     private double losingPlayerRanking;
 
     private PingPongPlayer winner;

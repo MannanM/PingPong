@@ -1,31 +1,28 @@
 package au.com.pingmate.domain;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
+import javax.persistence.*;
 
-//import org.apache.openelo.Player;
-//import org.hibernate.annotations.Type;
+import org.apache.openelo.Player;
+import org.hibernate.annotations.Type;
 
-//@Entity
-//@Table(name ="PINGPONG_PLAYER")
-public class PingPongPlayer {// implements Player<Integer> {
+@Entity
+@Table(name ="PINGPONG_PLAYER")
+@SequenceGenerator(name="SEQ_PLAYER", sequenceName="pingpong_player_player_id_seq")
+public class PingPongPlayer implements Player<Integer> {
 
-//    @Id
-//    @Column(name="PLAYER_ID")
-//    @GeneratedValue
+    @Id()
+    @Column(name="PLAYER_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PLAYER")
     private Integer identifier;
     
-//    @Column(name = "PLAYER_NAME")
+    @Column(name = "PLAYER_NAME")
     private String name;
     
-//    @Column(name = "PLAYER_RANKING")
+    @Column(name = "PLAYER_RANKING")
     private double ranking;
     
-//    @Column(name = "RESIGNED_FLAG")
-//    @Type(type = "yes_no")
+    @Column(name = "RESIGNED_FLAG")
+    @Type(type = "yes_no")
     private boolean resigned;
 
     public Integer getIdentifier() {
@@ -48,7 +45,6 @@ public class PingPongPlayer {// implements Player<Integer> {
         return ranking;
     }
 
-//    @Override
     public void updateRanking(Double aDouble) {
         setRanking(aDouble);
     }
