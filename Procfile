@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -DTG_ENV=prod -jar build/jetty-runner*.jar --port $PORT build/libs/*.war
+web: java $JAVA_OPTS -DTG_ENV=prod -jar build/jetty/jetty-runner*.jar --port $PORT build/libs/*.war
