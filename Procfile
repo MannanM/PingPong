@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -DTG_ENV=prod -jar build/jetty/jetty-runner*.jar --port $PORT build/libs/ping-mate.war
+web: java $JAVA_OPTS -DTG_ENV=prod -classpath ".;build/jetty" -jar build/jetty/jetty-runner*.jar --port $PORT build/libs/ping-mate.war
