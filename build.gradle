@@ -32,6 +32,7 @@ configurations{
 dependencies {
     jetty 'org.mortbay.jetty:jetty-runner:8.1.0.RC0'
     jetty 'javax.servlet:jstl:1.2'
+    jetty 'javax.servlet:javax.servlet-api:3.0.1'
 }
 
 task stage(dependsOn: ['war'], type: Copy) {
