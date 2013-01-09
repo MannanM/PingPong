@@ -39,7 +39,7 @@ public class PingPongPlayer implements Player<Integer> {
         return String.format("%s (%.2f)", name, ranking);
     }
 
-    public void setIdentifier(int identifier) {
+    public void setIdentifier(Integer identifier) {
         this.identifier = identifier;
     }
 
