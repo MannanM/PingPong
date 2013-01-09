@@ -25,7 +25,10 @@ public class PlayerController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addAction(@ModelAttribute("pingPongPlayer") PingPongPlayer pingPongPlayer) {
-        playerService.addPlayer(pingPongPlayer);
+        if (!pingPongPlayer.getName().equals("")) {
+            //todo: think of a better way to prevent no name save
+            playerService.addPlayer(pingPongPlayer);
+        }
         return "redirect:/player";
     }
 }
