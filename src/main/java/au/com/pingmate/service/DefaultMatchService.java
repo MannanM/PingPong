@@ -1,18 +1,18 @@
 package au.com.pingmate.service;
 
-import java.util.Date;
-
 import au.com.pingmate.domain.PingPongGame;
 import au.com.pingmate.domain.PingPongPlayer;
 import org.apache.openelo.Game;
 import org.apache.openelo.GameResult;
 import org.apache.openelo.RankingCalculator;
 
-public class MatchService {
+import java.util.Date;
+
+public class DefaultMatchService {
     
     private static final RankingCalculator rankingCalculator = new RankingCalculator();
     
-    public PingPongGame createGame(PingPongPlayer player1, PingPongPlayer player2, int score1, int score2) {
+    public PingPongGame createGame(PingPongPlayer player1, PingPongPlayer player2, int score1, int score2, Date played) {
         PingPongGame result = new PingPongGame();
         boolean player1IsWinner = score1 > score2;
         result.setWinner(player1IsWinner ? player1 : player2);
@@ -22,10 +22,10 @@ public class MatchService {
 
         Game<Integer> game = new Game<Integer>(result.getWinner(), result.getLoser(), GameResult.WIN);
         rankingCalculator.updateRating(game);
-        
-        result.populateRankings();
-        result.setPlayed(new Date());
+        result.setWinningPlayerRanking(result.getWinner().getRanking());
+        result.setLosingPlayerRanking(result.getLoser().getRanking());
 
+        result.setPlayed(played);
         return result;
     }
 }

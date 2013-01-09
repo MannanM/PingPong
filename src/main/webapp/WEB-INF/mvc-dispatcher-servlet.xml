@@ -22,7 +22,6 @@
         <constructor-arg value="${DATABASE_URL}"/>
     </bean>
 
-
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="url" value="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + ':' + @dbUrl.getPort() + @dbUrl.getPath() }"/>
         <property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
@@ -34,8 +33,6 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <bean id="playerDao" class="au.com.pingmate.dao.DefaultPlayerDao"/>
-
     <tx:annotation-driven />
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -43,6 +40,7 @@
         <property name="annotatedClasses">
             <list>
                 <value>au.com.pingmate.domain.PingPongPlayer</value>
+                <value>au.com.pingmate.domain.PingPongGame</value>
             </list>
         </property>
         <property name="configurationClass">

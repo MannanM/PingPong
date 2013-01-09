@@ -22,7 +22,7 @@ public class DefaultPlayerDao implements PlayerDao {
     }
 
     public List<PingPongPlayer> listPlayers() {
-        return sessionFactory.getCurrentSession().createQuery("from Player").list();
+        return sessionFactory.getCurrentSession().createQuery("from PingPongPlayer").list();
     }
 
     public PingPongPlayer find(int playerId) {

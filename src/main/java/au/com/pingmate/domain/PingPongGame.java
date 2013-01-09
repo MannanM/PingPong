@@ -1,20 +1,27 @@
 package au.com.pingmate.domain;
 
-import java.util.Date;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "PINGPONG_GAME")
+@SequenceGenerator(name="SEQ_PLAYER", sequenceName="pingpong_game_game_id_seq", initialValue = 1)
 public class PingPongGame {
 
     @Id
     @Column(name="GAME_ID")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PLAYER")
     private int id;
     
     @Column(name="DATE_PLAYED")
@@ -26,25 +33,21 @@ public class PingPongGame {
     @Column(name="LOSING_SCORE")
     private int losingScore;
     
-    @Column(name="WINNING_PLAYER")
-    private int winnerId;
-    
-    @Column(name="LOSING_PLAYER")
-    private int loserId;
-    
     @Column(name="WINNING_RANKING")
     private double winningPlayerRanking;
     
     @Column(name="LOSING_RANKING")
     private double losingPlayerRanking;
 
+    @ManyToOne
+    @Cascade({CascadeType.SAVE_UPDATE})
+    @JoinColumn(name="WINNING_PLAYER")
     private PingPongPlayer winner;
-    private PingPongPlayer loser;
 
-    public void populateRankings() {
-        winningPlayerRanking = winner.getRanking();
-        losingPlayerRanking = loser.getRanking();
-    }
+    @ManyToOne
+    @Cascade({CascadeType.SAVE_UPDATE})
+    @JoinColumn(name="LOSING_PLAYER")
+    private PingPongPlayer loser;
 
     public int getId() {
         return id;
@@ -78,22 +81,6 @@ public class PingPongGame {
         this.losingScore = losingScore;
     }
 
-    public int getWinnerId() {
-        return winnerId;
-    }
-
-    public void setWinnerId(int winnerId) {
-        this.winnerId = winnerId;
-    }
-
-    public int getLoserId() {
-        return loserId;
-    }
-
-    public void setLoserId(int loserId) {
-        this.loserId = loserId;
-    }
-
     public double getWinningPlayerRanking() {
         return winningPlayerRanking;
     }
@@ -120,11 +107,9 @@ public class PingPongGame {
 
     public void setWinner(PingPongPlayer winner) {
         this.winner = winner;
-        this.winnerId = winner.getIdentifier();
     }
 
     public void setLoser(PingPongPlayer loser) {
         this.loser = loser;
-        this.loserId = loser.getIdentifier();
     }
 }
