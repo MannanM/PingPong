@@ -21,6 +21,10 @@ dependencies {
     compile 'org.slf4j:slf4j-log4j12:1.5.2'
     compile 'javassist:javassist:3.3.GA'
 }
+war {
+    //needed for heroku to set a specific name
+    baseName='ping-mate'
+}
 
 configurations{
     jetty
