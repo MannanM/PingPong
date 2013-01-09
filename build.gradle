@@ -7,6 +7,7 @@ repositories {
 }
 
 dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
     compile 'org.springframework:spring-context:3.1.2.RELEASE'
     compile 'org.springframework:spring-web:3.1.2.RELEASE'
     compile 'org.springframework:spring-webmvc:3.1.2.RELEASE'
@@ -19,8 +20,6 @@ dependencies {
     compile 'org.hibernate:hibernate-core:3.3.0.GA'
     compile 'org.hibernate:hibernate-annotations:3.3.0.ga'
     compile 'org.hibernate:hibernate-commons-annotations:3.3.0.ga'
-    compile 'org.slf4j:slf4j-log4j12:1.5.2'
-    compile 'javassist:javassist:3.3.GA'
 }
 
 configurations{
