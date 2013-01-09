@@ -26,13 +26,13 @@ dependencies {
 }
 
 configurations{
-    myLibs
+    jetty
 }
 dependencies {
-    myLibs 'org.mortbay.jetty:jetty-runner:8.1.0.RC0'
+    jetty 'org.mortbay.jetty:jetty-runner:8.1.0.RC0'
 }
 
 task stage(dependsOn: ['war'], type: Copy) {
     into "$buildDir/jetty"
-    from configurations.myLibs
+    from configurations.jetty
 }
