@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -DTG_ENV=prod -jar build/tomcat/webapp-runner*.jar --port $PORT build/libs/ping-mate.war
+web: java $JAVA_OPTS -DTG_ENV=prod -jar build/tomcat/webapp-runner*.jar --port $PORT build/libs/*.war
