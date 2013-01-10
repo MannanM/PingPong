@@ -19,7 +19,7 @@
 
     <bean class="java.net.URI" id="dbUrl">
         <!--Need to set this property to something like postgres://postgres:test@localhost:5432/test-->
-        <constructor-arg value="${DATABASE_URL}"/>
+        <constructor-arg value="postgres://brisbaneoffice:TW@localhost:5432/test"/>
     </bean>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
