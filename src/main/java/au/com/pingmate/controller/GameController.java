@@ -52,8 +52,19 @@ public class GameController {
     public ModelAndView listPlayerGames(@PathVariable int id) {
         List<PingPongGame> games = gameService.findGamesPlayedBy(id);
         ModelAndView modelAndView = new ModelAndView("game/playerList", "games", games);
-        modelAndView.addObject("playerId", id);
+        modelAndView.addObject("player", getPlayerFromGames(id, games));
         return modelAndView;
+    }
+
+    private PingPongPlayer getPlayerFromGames(int id, List<PingPongGame> games) {
+        //To save a database call, get a player from the game list
+        if (!games.isEmpty()) {
+            PingPongGame aGame = games.get(0);
+            return aGame.getWinner().getIdentifier() == id ? aGame.getWinner() : aGame.getLoser();
+        }
+
+        //no games played so you have to go to the database
+        return playerService.findPlayer(id);
     }
 
     @InitBinder
