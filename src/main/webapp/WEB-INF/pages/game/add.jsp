@@ -2,45 +2,28 @@
 <html>
     <head>
         <title>Add Game</title>
+         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </head>
     <body>
-        <h2>Add Player</h2>
-        <form:form method="post" action="./add">
-            <table>
-                <tr>
-                    <td><form:label path="played">Played</form:label></td>
-                    <td><form:input path="played" /></td>
-                </tr>
-                <tr>
-                    <td><form:label path="player1">Player 1</form:label></td>
-                    <td>
-                        <form:select path="player1">
-                            <form:options items="${players}" itemValue="identifier" />
-                        </form:select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><form:label path="player1Score">Player 1 Score</form:label></td>
-                    <td><form:input path="player1Score" /></td>
-                </tr>
-                <tr>
-                    <td><form:label path="player2">Player 2</form:label></td>
-                    <td>
-                        <form:select path="player2" >
-                            <form:options items="${players}" itemValue="identifier" />
-                        </form:select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><form:label path="player2Score">Player 2 Score</form:label></td>
-                    <td><form:input path="player2Score" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" value="Add Game"/>
-                    </td>
-                </tr>
-            </table>
-        </form:form>
+        <div class="container">
+            <h2>Add Game</h2>
+            <form:form method="post" action="./add">
+                <div class="row">
+                    <form:select path="player1" class="span3">
+                        <form:options items="${players}" itemValue="identifier" />
+                    </form:select>
+                    <form:input path="player1Score" class="input-medium span1" style="height:30px"/>
+                    VS.
+                    <form:input path="player2Score" class="input-medium span1" style="height:30px"/>
+                    <form:select path="player2" class="span3" >
+                        <form:options items="${players}" itemValue="identifier" />
+                    </form:select>
+                    <form:input path="played"  class="input-small" style="height:30"/>
+                    <input type="submit" value="Add Game" class="btn btn-success" style="margin-bottom:10px"/>
+                </div>
+            </form:form>
+        </div>
     </body>
 </html>

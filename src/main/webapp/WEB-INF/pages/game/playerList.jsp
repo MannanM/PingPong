@@ -5,9 +5,14 @@
 <html>
     <head>
         <title>Games Played by Player</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </head>
     <body>
-        <table>
+           <div class="container">
+            <div class="row">
+        <table class="table table-hover">
             <tr>
                 <th>#</th>
                 <th>Played</th>
@@ -15,7 +20,14 @@
                 <th>Result</th>
             </tr>
         <c:forEach var="game" items="${games}" varStatus="theCount">
-            <tr>
+            <c:choose>
+                <c:when test="${playerId == game.winner.identifier}">
+                    <tr class="success">
+                </c:when>
+                <c:otherwise>
+                    <tr class="error">
+                </c:otherwise>
+            </c:choose>
                <td>${fn:length(games) - theCount.index}</td>
                <td><fmt:formatDate pattern="d/M/yy" value="${game.played}" /></td>
                <td>${game.winner.name}
@@ -27,5 +39,7 @@
                <td>${game.winningScore}:${game.losingScore}</td>
             </tr>
         </c:forEach>
+        </div>
+        </div>
     </body>
 </html>

@@ -5,15 +5,21 @@
 <html>
     <head>
         <title>View Players</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </head>
     <body>
+    <div class="container">
+        <div class="row">
         <form:form method="post" action="player/add">
-            <form:label path="name">Name</form:label>
-            <form:input path="name" />
-            <input type="submit" value="Add Player"/>
-            <a href="game/add">Add Game</a>
+            <form:input path="name" placeholder="Player Name..." style="height:25px;margin-top:10px;padding-bottom:0"/>
+            <div class="btn-group">
+                <input class="btn btn-primary" type="submit" value="Add Player" />
+                <input class="btn btn-success" type="button" value="Add Game" onclick="window.location='game/add';return false" />
+            </div>
         </form:form>
-        <table>
+        <table class="table table-hover">
             <tr>
                 <th>Rank</th>
                 <th>Name</th>
@@ -26,5 +32,7 @@
                <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${player.ranking}" /></td>
             </tr>
         </c:forEach>
+        </div>
+        </div>
     </body>
 </html>

@@ -51,7 +51,9 @@ public class GameController {
     @RequestMapping(value = "/player/{id}")
     public ModelAndView listPlayerGames(@PathVariable int id) {
         List<PingPongGame> games = gameService.findGamesPlayedBy(id);
-        return new ModelAndView("game/playerList", "games", games);
+        ModelAndView modelAndView = new ModelAndView("game/playerList", "games", games);
+        modelAndView.addObject("playerId", id);
+        return modelAndView;
     }
 
     @InitBinder
