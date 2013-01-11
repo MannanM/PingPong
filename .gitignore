@@ -4,3 +4,8 @@ build
 *.iml
 *.ipr
 *.iws
+*.log
+*.script
+target
+pingMate.properties
+*.lck
