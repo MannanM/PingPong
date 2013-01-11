@@ -1,4 +1,4 @@
-['java', 'idea', 'war', 'jetty', 'project-report'].each {
+['java', 'idea', 'war', 'jetty'].each {
     apply plugin: it
 }
 
@@ -32,14 +32,12 @@ dependencies {
 
 configurations{
     tomcat
-    tomcatLocal
 }
 
 dependencies {
     tomcat('com.github.jsimone:webapp-runner:7.0.30.1') {
         exclude group: 'spy'
     }
-    tomcatLocal('org.hsqldb:hsqldb:2.2.9')
 }
 
 
@@ -56,11 +54,18 @@ task stage(dependsOn: ['war'], type: Copy) {
 
 task tomcatRun(dependsOn: ['stage'], type: Exec) {
     executable='java'
-    args=['-jar', "$buildDir/tomcat/webapp-runner-7.0.30.1.jar", "$buildDir/libs/ping-mate.war"]
+    args=['-Dspring.profiles.active=' +
+            defaultProperty('spring.profiles.active', 'default'),
+            '-jar', "$buildDir/tomcat/webapp-runner-7.0.30.1.jar",
+            "$buildDir/libs/ping-mate.war"]
 }
 
 tomcatRun.configure {
     dependencies {
        runtime 'org.hsqldb:hsqldb:2.2.9'
     }
+}
+
+def defaultProperty(propName, defaultVal){
+    return  System.getProperty(propName) == null ? defaultVal : System.getProperty(propName)
 }
