@@ -73,7 +73,9 @@
                         </div>
                         <div class="row">
                             <div class="span1">Avg</div>
-                            <div class="span1">${stats.winTotalScore / stats.wins}</div>
+                            <div class="span1">
+                                <fmt:formatNumber type="number" maxFractionDigits="2" value="${stats.winTotalScore / stats.wins}" />
+                            </div>
                         </div>
                     </div>
                 </c:if>
@@ -92,7 +94,9 @@
                         </div>
                         <div class="row">
                             <div class="span1">Avg</div>
-                            <div class="span1">${stats.lossTotalScore / stats.losses}</div>
+                            <div class="span1">
+                                <fmt:formatNumber type="number" maxFractionDigits="2" value="${stats.lossTotalScore / stats.losses}" />
+                            </div>
                         </div>
                     </div>
                 </c:if>
@@ -112,8 +116,8 @@
                     </div>
                     <div class="row">
                         <div class="span1">Bully</div>
-                        <div class="span1 text-error">${stats.victim.name}</div>
-                        <div class="span1">${stats.victimScore}</div>
+                        <div class="span1 text-error">${stats.bully.name}</div>
+                        <div class="span1">${stats.bullyScore}</div>
                     </div>
                 </div>
             </div>
