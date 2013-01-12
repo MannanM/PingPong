@@ -3,6 +3,7 @@ package au.com.pingmate.controller;
 import au.com.pingmate.domain.GameRequest;
 import au.com.pingmate.domain.PingPongGame;
 import au.com.pingmate.domain.PingPongPlayer;
+import au.com.pingmate.domain.PlayerStats;
 import au.com.pingmate.service.DefaultMatchService;
 import au.com.pingmate.service.GameService;
 import au.com.pingmate.service.PlayerService;
@@ -48,10 +49,18 @@ public class GameController {
         return "redirect:/player";
     }
 
-    @RequestMapping(value = "/player/{id}")
+    @RequestMapping(value = "/player/{id}/history")
     public ModelAndView listPlayerGames(@PathVariable int id) {
         List<PingPongGame> games = gameService.findGamesPlayedBy(id);
-        ModelAndView modelAndView = new ModelAndView("game/playerList", "games", games);
+        ModelAndView modelAndView = new ModelAndView("game/game-history", "games", games);
+        modelAndView.addObject("player", getPlayerFromGames(id, games));
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/player/{id}/stats")
+    public ModelAndView showStats(@PathVariable int id) {
+        List<PingPongGame> games = gameService.findGamesPlayedBy(id);
+        ModelAndView modelAndView = new ModelAndView("game/game-stats", "stats", new PlayerStats(games, id));
         modelAndView.addObject("player", getPlayerFromGames(id, games));
         return modelAndView;
     }

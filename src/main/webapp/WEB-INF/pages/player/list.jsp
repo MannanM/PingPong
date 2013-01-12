@@ -28,7 +28,7 @@
         <c:forEach var="player" items="${players}" varStatus="theCount">
             <tr>
                <td>${theCount.count}</td>
-               <td><a href='game/player/${player.identifier}'>${player.name}</a></td>
+               <td><a href='game/player/${player.identifier}/history'>${player.name}</a></td>
                <td><fmt:formatNumber type="number" maxFractionDigits="3" value="${player.ranking}" /></td>
             </tr>
         </c:forEach>

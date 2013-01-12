@@ -11,10 +11,16 @@
     </head>
     <body>
         <div class="container">
-            <h2 class="span5">${player.name}'s Game History</h2>
-            <div class="btn-toolbar" style="margin-top:15px">
-                <div class="btn-group">
-                    <a class="btn" href="../../player"><i class="icon-arrow-left"></i> Back</a>
+            <div class="row">
+                <h2>${player.name}'s Game History</h2>
+            </div>
+            <div class="row">
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <a class="btn" href="../../../player"><i class="icon-arrow-left"></i> Back</a>
+                        <a class="btn" href="stats"><i class="icon-tasks"></i> Stats</a>
+                        <a class="btn" href="chart"><i class="icon-signal"></i> Chart</a>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -36,10 +42,26 @@
                     </c:choose>
                         <td>${fn:length(games) - theCount.index}</td>
                         <td><fmt:formatDate pattern="d/M/yy" value="${game.played}" /></td>
-                        <td>${game.winner.name}
+                        <td>
+                            <c:if test = "${player.identifier != game.winner.identifier}">
+                                <a href="../${game.winner.identifier}/history">
+                            </c:if>
+                            ${game.winner.name}
+                            <c:if test = "${player.identifier != game.winner.identifier}">
+                                </a>
+                            </c:if>
+
                             (<fmt:formatNumber type="number" maxFractionDigits="0" value="${game.winningPlayerRanking}" />)
                             vs
+
+                            <c:if test = "${player.identifier != game.loser.identifier}">
+                                <a href="../${game.loser.identifier}/history">
+                            </c:if>
                             ${game.loser.name}
+                            <c:if test = "${player.identifier != game.loser.identifier}">
+                                </a>
+                            </c:if>
+
                             (<fmt:formatNumber type="number" maxFractionDigits="0" value="${game.losingPlayerRanking}" />)
                         </td>
                         <td>${game.winningScore}:${game.losingScore}</td>
