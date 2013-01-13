@@ -7,6 +7,7 @@ import au.com.pingmate.domain.PlayerStats;
 import au.com.pingmate.service.DefaultMatchService;
 import au.com.pingmate.service.GameService;
 import au.com.pingmate.service.PlayerService;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -73,7 +74,7 @@ public class GameController {
 
     @RequestMapping(value = "/player/{id}/json")
     public @ResponseBody List<PingPongGame> showGamesAsJson(@PathVariable int id) {
-        return gameService.findGamesPlayedBy(id);
+        return Lists.reverse(gameService.findGamesPlayedBy(id));
     }
 
     private PingPongPlayer getPlayerFromGames(int id, List<PingPongGame> games) {

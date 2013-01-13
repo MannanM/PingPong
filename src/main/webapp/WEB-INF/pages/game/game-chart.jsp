@@ -13,7 +13,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <h2>${player.name}'s Statistics</h2>
+                <h2>${player.name}'s Ranking</h2>
             </div>
             <div class="row">
                 <div class="btn-toolbar">
@@ -38,6 +38,7 @@
                 var options = {
                             chart: { renderTo: 'chartArea' },
                             title: { text: "${player.name}'s Ranking History" },
+                            subtitle: { text: 'Ranking over games played' },
                             xAxis: {
                                 tickInterval: 1,
                                 tickWidth: 0,
