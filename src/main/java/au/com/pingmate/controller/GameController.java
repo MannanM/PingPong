@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.text.SimpleDateFormat;
@@ -63,6 +64,16 @@ public class GameController {
         ModelAndView modelAndView = new ModelAndView("game/game-stats", "stats", new PlayerStats(games, id));
         modelAndView.addObject("player", getPlayerFromGames(id, games));
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/player/{id}/chart")
+    public ModelAndView showChart(@PathVariable int id) {
+        return new ModelAndView("game/game-chart", "player", playerService.findPlayer(id));
+    }
+
+    @RequestMapping(value = "/player/{id}/json")
+    public @ResponseBody List<PingPongGame> showGamesAsJson(@PathVariable int id) {
+        return gameService.findGamesPlayedBy(id);
     }
 
     private PingPongPlayer getPlayerFromGames(int id, List<PingPongGame> games) {

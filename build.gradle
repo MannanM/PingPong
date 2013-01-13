@@ -27,7 +27,7 @@ dependencies {
     compile 'javassist:javassist:3.3.GA'
     compile 'javax.servlet:jstl:1.2'
     compile 'javax.servlet:javax.servlet-api:3.0.1'
-
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.7.1'
 }
 
 configurations{
