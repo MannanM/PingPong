@@ -76,7 +76,7 @@
                             }]
                         };
 
-                jQuery.get('http://localhost:8080/ping-mate/game/player/2/json', null, function(data, state, xhr) {
+                jQuery.get('json', null, function(data, state, xhr) {
                     games = data;
                     for (var i = 0; i < data.length; i++) {
                         var score = data[i].losingPlayerRanking;
