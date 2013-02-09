@@ -9,8 +9,8 @@ import org.apache.openelo.RankingCalculator;
 import java.util.Date;
 
 public class DefaultMatchService {
-    
-    private static final RankingCalculator rankingCalculator = new RankingCalculator();
+    private static final int K_FACTOR = 24;
+    private static final RankingCalculator rankingCalculator = new RankingCalculator(K_FACTOR);
     
     public PingPongGame createGame(PingPongPlayer player1, PingPongPlayer player2, int score1, int score2, Date played) {
         PingPongGame result = new PingPongGame();

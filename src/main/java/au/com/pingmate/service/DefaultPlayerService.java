@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class DefaultPlayerService implements PlayerService {
+    private static final int INITIAL_RANKING = 1200;
 
     @Autowired
     private PlayerDao playerDao;
@@ -21,7 +22,7 @@ public class DefaultPlayerService implements PlayerService {
 
     @Transactional
     public void addPlayer(PingPongPlayer player) {
-        player.setRanking(1000);
+        player.setRanking(INITIAL_RANKING);
         player.setResigned(false);
         playerDao.save(player);
     }
