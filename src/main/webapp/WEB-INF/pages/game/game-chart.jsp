@@ -33,7 +33,7 @@
             var scores = [];
             var games;
             var chart;
-            scores.push([0, 1000.0]);
+            scores.push([0, <%= au.com.pingmate.service.DefaultPlayerService.INITIAL_RANKING %>.0]);
             $(function() {
                 var options = {
                             chart: { renderTo: 'chartArea' },

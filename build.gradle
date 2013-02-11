@@ -40,7 +40,6 @@ dependencies {
     }
 }
 
-
 jettyRun.configure{
     dependencies {
         runtime 'org.hsqldb:hsqldb:2.2.9'

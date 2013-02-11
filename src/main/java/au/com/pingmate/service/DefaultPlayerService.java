@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class DefaultPlayerService implements PlayerService {
-    private static final int INITIAL_RANKING = 1200;
+    public static final int INITIAL_RANKING = 1200;
 
     @Autowired
     private PlayerDao playerDao;
