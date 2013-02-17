@@ -23,6 +23,11 @@ public class PlayerController {
         return model;
     }
 
+    @RequestMapping(value="/leaderboard", method = RequestMethod.GET)
+    public ModelAndView ranking() {
+        return new ModelAndView("player/leaderboard", "players", playerService.listLeaderboard());
+    }
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public String addAction(@ModelAttribute("pingPongPlayer") PingPongPlayer pingPongPlayer) {
         if (!pingPongPlayer.getName().equals("")) {

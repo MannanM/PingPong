@@ -15,8 +15,10 @@
         <form:form method="post" action="player/add">
             <form:input path="name" placeholder="Player Name..." style="height:25px;margin-top:10px;padding-bottom:0"/>
             <div class="btn-group">
-                <input class="btn btn-primary" type="submit" value="Add Player" />
-                <input class="btn btn-success" type="button" value="Add Game" onclick="window.location='game/add';return false" />
+                <a class="btn btn-info" onclick="document.getElementById('command').submit();return false"
+                    href="#"><i class='icon-user icon-white'></i> Add Player</a>
+                <a class="btn" href="player/leaderboard"><i class='icon-list'></i> Leaderboard</a>
+                <a class="btn btn-success" href="game/add"><i class='icon-plus icon-white'></i> Add Game</a>
             </div>
         </form:form>
         <table class="table table-hover">

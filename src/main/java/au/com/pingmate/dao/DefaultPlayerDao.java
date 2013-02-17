@@ -1,7 +1,9 @@
 package au.com.pingmate.dao;
 
+import au.com.pingmate.domain.PingPongGame;
 import au.com.pingmate.domain.PingPongPlayer;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -27,5 +29,13 @@ public class DefaultPlayerDao implements PlayerDao {
 
     public PingPongPlayer find(int playerId) {
         return (PingPongPlayer)sessionFactory.getCurrentSession().get(PingPongPlayer.class, playerId);
+    }
+
+    public List<Object[]> listPlayersAndGameCounts(boolean wins) {
+        String type = wins ? "winner" : "loser";
+        return sessionFactory.getCurrentSession().createCriteria(PingPongGame.class).setProjection(
+                Projections.projectionList()
+                        .add(Projections.groupProperty(type))
+                        .add(Projections.count(type))).list();
     }
 }

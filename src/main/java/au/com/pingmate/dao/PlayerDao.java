@@ -9,4 +9,5 @@ public interface PlayerDao {
     void update(PingPongPlayer player);
     PingPongPlayer find(int playerId);
     List<PingPongPlayer> listPlayers();
+    List<Object[]> listPlayersAndGameCounts(boolean wins);
 }
